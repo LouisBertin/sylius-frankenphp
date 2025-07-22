@@ -30,7 +30,7 @@ services:
             - PHP_INI_OPCACHE__MEMORY_CONSUMPTION:256
             - PHP_INI_OPCACHE__MAX_ACCELERATED_FILES:20000
             - PHP_INI_OPCACHE__REVALIDATE_FREQ:60
-            - FRANKENPHP_WORKERS=4
+            - FRANKENPHP_WORKERS=8
         volumes:
             - .:/srv/app:rw,cached
             - ./public:/srv/app/public:rw,delegated

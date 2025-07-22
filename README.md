@@ -3,8 +3,12 @@
         <picture>
           <source media="(prefers-color-scheme: dark)" srcset="https://media.sylius.com/sylius-logo-800-dark.png">
           <source media="(prefers-color-scheme: light)" srcset="https://media.sylius.com/sylius-logo-800.png">
-          <img alt="Sylius Logo." src="https://media.sylius.com/sylius-logo-800.png">
+          <img alt="Sylius Logo" src="https://media.sylius.com/sylius-logo-800.png" height="100">
         </picture>
+    </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://frankenphp.dev/">
+        <img alt="FrankenPHP Logo" src="https://frankenphp.dev/img/dab.svg" height="100">
     </a>
 </p>
 
@@ -13,7 +17,6 @@
 <p align="center">This is Sylius Standard Edition repository for starting new projects.</p>
 
 ## About
-
 Sylius is the first decoupled eCommerce framework based on [**Symfony**](http://symfony.com) and [**Doctrine**](http://doctrine-project.org). 
 The highest quality of code, strong testing culture, built-in Agile (BDD) workflow and exceptional flexibility make it the best solution for application tailored to your business requirements. 
 Enjoy being an eCommerce Developer again!

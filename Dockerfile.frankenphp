@@ -1,0 +1,42 @@
+FROM dunglas/frankenphp:1.9
+
+RUN apt-get update && apt-get install -y \
+    libicu-dev \
+    libzip-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libwebp-dev \
+    libonig-dev \
+    libxml2-dev \
+    libpq-dev \
+    git \
+    zip \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions required by Sylius
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
+    && docker-php-ext-install \
+    intl \
+    zip \
+    gd \
+    pdo \
+    pdo_mysql \
+    pdo_pgsql \
+    mbstring \
+    xml \
+    ctype \
+    iconv \
+    opcache \
+    exif \
+    && rm -rf /tmp/*
+
+# Install Composer
+RUN install-php-extensions @composer
+
+# Copy custom PHP configuration
+COPY docker-php.ini /usr/local/etc/php/conf.d/docker-php-custom.ini
+
+# Set working directory
+WORKDIR /srv/app

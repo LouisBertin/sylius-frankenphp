@@ -1,0 +1,15 @@
+{
+	auto_https off
+	admin off
+}
+
+:80 {
+	root * /srv/app/public
+	encode zstd br gzip
+	
+	# Use FrankenPHP's built-in PHP server
+	php_server
+	
+	# Handle static files
+	file_server
+}

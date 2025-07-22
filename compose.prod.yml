@@ -1,0 +1,80 @@
+services:
+    frankenphp:
+        build:
+            context: .
+            dockerfile: Dockerfile.frankenphp
+        depends_on:
+            mysql:
+                condition: service_healthy
+        environment:
+            # Caddy configuration
+            - SERVER_NAME=${SERVER_NAME}
+            #- CADDY_GLOBAL_OPTIONS=auto_https off
+            # FrankenPHP worker mode
+            - FRANKENPHP_CONFIG=worker ./public/index.php
+            - APP_RUNTIME=Runtime\FrankenPhpSymfony\Runtime
+            # Sylius configuration
+            - APP_ENV=prod
+            - APP_SECRET=EDITME
+            - DATABASE_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql/${MYSQL_DATABASE}
+            - MAILER_DSN=smtp://mailhog:1025
+            - MESSENGER_TRANSPORT_DSN=doctrine://default
+            - SYLIUS_MESSENGER_TRANSPORT_MAIN_DSN=doctrine://default
+            - SYLIUS_MESSENGER_TRANSPORT_MAIN_FAILED_DSN=doctrine://default?queue_name=main_failed
+            - SYLIUS_MESSENGER_TRANSPORT_CATALOG_PROMOTION_REMOVAL_DSN=doctrine://default?queue_name=catalog_promotion_removal
+            - SYLIUS_MESSENGER_TRANSPORT_CATALOG_PROMOTION_REMOVAL_FAILED_DSN=doctrine://default?queue_name=catalog_promotion_removal_failed
+            - SYLIUS_MESSENGER_TRANSPORT_PAYMENT_REQUEST_DSN=sync://
+            - SYLIUS_MESSENGER_TRANSPORT_PAYMENT_REQUEST_FAILED_DSN=sync://
+            - PHP_DATE_TIMEZONE=${PHP_DATE_TIMEZONE:-UTC}
+            - PHP_INI_OPCACHE__MEMORY_CONSUMPTION:256
+            - PHP_INI_OPCACHE__MAX_ACCELERATED_FILES:20000
+            - PHP_INI_OPCACHE__REVALIDATE_FREQ:60
+            - FRANKENPHP_WORKERS=4
+        volumes:
+            - .:/srv/app:rw,cached
+            - ./public:/srv/app/public:rw,delegated
+            # if you develop on Linux, you may use a bind-mounted host directory instead
+            - ./Caddyfile.prod:/etc/frankenphp/Caddyfile:ro
+            - caddy_data:/data
+            - caddy_config:/config
+        ports:
+            - "80:80"
+            - "443:443"
+    
+    mysql:
+        image: mysql:8.4
+        platform: linux/amd64
+        healthcheck:
+            test: '/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} --execute "SHOW databases;"'
+            timeout: 3s
+            interval: 1s
+            retries: 10
+        volumes:
+            - mysql-data:/var/lib/mysql:rw
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        cap_add:
+            - SYS_NICE # prevent "mbind: Operation not permitted" errors
+    
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        platform: linux/amd64
+        ports:
+            - "8080:80"
+        depends_on:
+            mysql:
+                condition: service_healthy
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            PMA_ARBITRARY: 1  # Permet de saisir les credentials manuellement
+
+volumes:
+    mysql-data:
+    caddy_data:
+    caddy_config:  

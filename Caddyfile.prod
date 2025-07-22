@@ -1,0 +1,18 @@
+{$SERVER_NAME} {
+	root * /srv/app/public
+	encode zstd br gzip
+
+	# Assets statiques = cache 1 an
+    @assets path *.css *.js *.png *.jpg *.jpeg *.gif *.ico *.svg *.woff* *.ttf
+    header @assets Cache-Control "public, max-age=31536000"
+
+    # Tout le reste = pas de cache
+    @dynamic path *.php /api/* /admin/*
+    header @dynamic Cache-Control "no-cache"
+
+	# Use FrankenPHP's built-in PHP server
+	php_server
+
+	# Handle static files
+	file_server
+}

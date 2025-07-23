@@ -15,7 +15,7 @@ services:
             - APP_RUNTIME=Runtime\FrankenPhpSymfony\Runtime
             # Sylius configuration
             - APP_ENV=prod
-            - APP_DEBUG=false
+            - APP_DEBUG=0
             - APP_SECRET=EDITME
             - DATABASE_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql/${MYSQL_DATABASE}
             - MAILER_DSN=smtp://mailhog:1025

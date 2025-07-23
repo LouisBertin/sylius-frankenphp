@@ -46,10 +46,11 @@ services:
         image: mysql:8.4
         platform: linux/amd64
         healthcheck:
-            test: '/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} --execute "SHOW databases;"'
-            timeout: 3s
-            interval: 1s
-            retries: 10
+            test: ['CMD', '/usr/bin/mysql', '--user=${MYSQL_USER}', '--password=${MYSQL_PASSWORD}', '--execute', 'SELECT 1']
+            start_period: 30s    # Temps avant de commencer les checks
+            interval: 10s        # Plus raisonnable
+            timeout: 5s          # Plus de temps pour répondre
+            retries: 5           # Moins de retries mais plus espacés
         volumes:
             - mysql-data:/var/lib/mysql:rw
         ports:
@@ -80,13 +81,12 @@ services:
         user: ${DOCKER_USER:-1000:1000}
         working_dir: /srv/sylius
         entrypoint: [ "/bin/sh","-c" ]
-        command:
-            - |
-                yarn install
-                yarn build
         volumes:
             - .:/srv/sylius:rw,cached
             - ./public:/srv/sylius/public:rw,delegated
+        profiles:
+            - tools
+
     mailhog:
         image: mailhog/mailhog:latest
         ports:

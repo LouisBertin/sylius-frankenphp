@@ -32,13 +32,13 @@ cc:
 	docker-compose exec frankenphp bin/console cache:clear
 
 yarn-install:
-	docker-compose run --user root --rm nodejs "yarn install && yarn encore dev"
+	docker-compose --profile tools run --user root --rm nodejs "yarn install && yarn encore dev"
 
 yarn-shell:
-	@ENV=$(ENV) DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) run --rm -i nodejs sh
+	@ENV=$(ENV) DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) --profile tools run --rm -i nodejs sh
 
 node-watch:
-	@ENV=$(ENV) DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) run --rm -i nodejs "npm run watch"
+	@ENV=$(ENV) DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) --profile tools run --rm -i nodejs "npm run watch"
 
 update-channel-url:
 	@read -p "Entrez le nouveau hostname: " hostname; \

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+SERVER="user@domain.com"
+PROJECT_PATH="/your/path/"
+
+echo "🚀 Déploiement en cours..."
+
+ssh $SERVER << EOF
+cd $PROJECT_PATH
+echo "📥 Pull des changements..."
+git pull origin main && \
+echo "🔨 Rebuild et restart..." && \
+make cc && \
+docker-compose -f compose.prod.yml up --force-recreate -d frankenphp && \
+echo "✅ Déploiement terminé !"
+EOF

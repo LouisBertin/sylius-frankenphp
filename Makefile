@@ -32,6 +32,7 @@ down:
 install:
 	docker-compose exec frankenphp composer install
 	docker-compose exec frankenphp bin/console sylius:install -s default -n
+	make yarn-install
 
 clean:
 	@ENV=$(ENV) DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) down -v
@@ -42,7 +43,10 @@ franken:
 cc:
 	docker-compose exec frankenphp bin/console cache:clear
 
-node-shell:
+yarn-install:
+	docker-compose run --rm nodejs "yarn install && yarn encore dev"
+
+yarn-shell:
 	@ENV=$(ENV) DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) run --rm -i nodejs sh
 
 node-watch:

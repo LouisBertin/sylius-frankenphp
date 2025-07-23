@@ -62,3 +62,4 @@ phpstan.neon
 
 .idea
 .env
+deploy.sh

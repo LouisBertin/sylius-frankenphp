@@ -27,7 +27,7 @@ Sylius and a Docker config based on FrankenPHP
 
 ### Development
 ```bash
-git@github.com:LouisBertin/sylius-frankenphp.git
+git clone git@github.com:LouisBertin/sylius-frankenphp.git
 cd sylius-frankenphp
 cp .env.dist .env - change "docker variables" section
 make up
@@ -45,7 +45,7 @@ make install
 - docker and docker-compose available
 
 ```bash
-git@github.com:LouisBertin/sylius-frankenphp.git
+git clone git@github.com:LouisBertin/sylius-frankenphp.git
 cd sylius-frankenphp
 cp .env.dist .env - change "docker variables" section
 make up-prod

@@ -6,10 +6,6 @@
     @assets path *.css *.js *.png *.jpg *.jpeg *.gif *.ico *.svg *.woff* *.ttf
     header @assets Cache-Control "public, max-age=31536000"
 
-    # Pages spécifiques avec cache (ex: 5 minutes)
-    @cached_pages path /en_US/ /en_US/contact/
-    header @cached_pages Cache-Control "public, max-age=3600"
-
     # Tout le reste = pas de cache
     @dynamic path *.php /api/* /admin/*
     header @dynamic Cache-Control "no-cache"

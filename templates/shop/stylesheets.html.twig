@@ -1,1 +1,5 @@
-{{ encore_entry_link_tags('app-shop-entry', null, 'app.shop') }}
+{% set cssFiles = encore_entry_css_files('app-shop-entry', 'app.shop') %}
+
+{% for cssFile in cssFiles %}
+    <link rel="preload" href="{{ cssFile }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+{% endfor %}

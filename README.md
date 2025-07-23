@@ -21,6 +21,10 @@ Sylius and a Docker config based on FrankenPHP
 
 ## Installation
 
+**prerequisite**
+
+- docker and docker-compose
+
 ### Development
 ```bash
 git@github.com:LouisBertin/sylius-frankenphp.git
@@ -33,6 +37,12 @@ make install
 ⚠️ the `hostname` value is asked during the `make install` command
 
 ### Production
+
+**prerequisite**
+
+- a domain name pointing to your server. Put the hostname value inside the `.env` Caddy will generate SSL certificate for you
+- ssh access to your server
+- docker and docker-compose available
 
 ```bash
 git@github.com:LouisBertin/sylius-frankenphp.git

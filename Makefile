@@ -32,7 +32,7 @@ cc:
 	docker-compose exec frankenphp bin/console cache:clear
 
 yarn-install:
-	docker-compose run --rm nodejs "yarn install && yarn encore dev"
+	docker-compose run --user root --rm nodejs "yarn install && yarn encore dev"
 
 yarn-shell:
 	@ENV=$(ENV) DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) run --rm -i nodejs sh
@@ -43,4 +43,4 @@ node-watch:
 update-channel-url:
 	@read -p "Entrez le nouveau hostname: " hostname; \
     docker-compose exec frankenphp bin/console doctrine:query:sql \
-    "UPDATE sylius_channel SET hostname = '$${hostname}' WHERE id = 1"
+    "UPDATE sylius_channel SET hostname = '$${hostname}' LIMIT 1"

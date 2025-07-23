@@ -28,10 +28,9 @@ cd sylius-frankenphp
 cp .env.dist .env - change "docker variables" section
 make up
 make install
-open http://localhost
 ```
 
-⚠️ change `sylius_channel` url if needed
+⚠️ the `hostname` value is asked during the `make install` command
 
 ### Production
 
@@ -41,8 +40,9 @@ cd sylius-frankenphp
 cp .env.dist .env - change "docker variables" section
 make up-prod
 make install
-open YOUR_SERVER_NAME_URL
 ```
+
+⚠️ the `hostname` value is asked during the `make install` command
 
 ## More info
 

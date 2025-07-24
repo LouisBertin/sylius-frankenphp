@@ -3,6 +3,8 @@ services:
         build:
             context: .
             dockerfile: Dockerfile.frankenphp
+            args:
+                - MEMORY_LIMIT=${MEMORY_LIMIT:-512M}
         depends_on:
             mysql:
                 condition: service_healthy

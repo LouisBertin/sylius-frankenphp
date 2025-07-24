@@ -1,5 +1,8 @@
 FROM dunglas/frankenphp:1.9
 
+ARG MEMORY_LIMIT
+ENV PHP_MEMORY_LIMIT=${MEMORY_LIMIT:-512M}
+
 RUN apt-get update && apt-get install -y \
     libicu-dev \
     libzip-dev \
@@ -37,6 +40,9 @@ RUN install-php-extensions @composer
 
 # Copy custom PHP configuration
 COPY docker-php.ini /usr/local/etc/php/conf.d/docker-php-custom.ini
+
+# Modifier php.ini avec cette valeur
+RUN echo "memory_limit = ${PHP_MEMORY_LIMIT}" >> /usr/local/etc/php/conf.d/docker-php-custom.ini
 
 # Set working directory
 WORKDIR /srv/app

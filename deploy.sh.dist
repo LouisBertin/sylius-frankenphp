@@ -1,11 +1,12 @@
 #!/bin/bash
 
 SERVER="user@domain.com"
+PORT="22"
 PROJECT_PATH="/your/path/"
 
 echo "🚀 Déploiement en cours..."
 
-ssh $SERVER << EOF
+ssh -p $PORT $SERVER << EOF
 cd $PROJECT_PATH
 echo "📥 Pull des changements..."
 git pull origin main && \

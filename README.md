@@ -6,10 +6,10 @@
 
 <h1 align="center">Sylius + FrankenPHP + Docker</h1>
 
-<p align="center">This is Sylius Standard Edition repository for starting new projects.</p>
+<p align="center">A modern Sylius e-commerce setup powered by FrankenPHP and Docker for high-performance applications.</p>
 
 ## About
-Sylius and a Docker config based on FrankenPHP
+Sylius and a Docker config based on FrankenPHP worker mode https://frankenphp.dev/docs/worker/
 
 🚨 You can extract the Docker config for your own Sylius project. This is just a demo with Sylius 2.1.
 

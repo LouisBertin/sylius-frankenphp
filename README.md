@@ -2,11 +2,9 @@
     <a href="https://sylius.com" target="_blank">
       <img alt="Sylius Logo" src="https://avatars.githubusercontent.com/u/719423?s=280&v=4" height="100">
     </a>
-    &nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://frankenphp.dev/">
         <img alt="FrankenPHP Logo" src="https://frankenphp.dev/img/dab.svg" height="100">
     </a>
-    &nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://www.docker.com/">
         <img alt="FrankenPHP Logo" src="https://training.galaxyproject.org/training-material/topics/admin/images/docker_whale.png" height="100">
     </a>

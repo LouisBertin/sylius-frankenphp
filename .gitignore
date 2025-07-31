@@ -61,5 +61,6 @@ phpstan.neon
 ###< liip/imagine-bundle ###
 
 .idea
+.DS_Store
 .env
 deploy.sh

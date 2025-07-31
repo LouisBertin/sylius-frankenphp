@@ -23,7 +23,7 @@ Sylius and a Docker config based on FrankenPHP
 
 **prerequisite**
 
-- docker and docker-compose
+- docker and docker compose : https://docs.docker.com/engine/install/
 
 ### Development
 ```bash
@@ -42,7 +42,7 @@ make install
 
 - a domain name pointing to your server. Put the hostname value inside the `.env` Caddy will generate SSL certificate for you
 - ssh access to your server
-- docker and docker-compose available
+- docker and docker compose : https://docs.docker.com/engine/install/
 
 ```bash
 git clone git@github.com:LouisBertin/sylius-frankenphp.git

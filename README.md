@@ -11,7 +11,7 @@
 ## About
 Sylius and a Docker config based on FrankenPHP worker mode https://frankenphp.dev/docs/worker/
 
-🚨 You can extract the Docker config for your own Sylius project. This is just a demo with Sylius 2.1.
+🚨 You can extract the Docker config for your own Sylius project. This is just a demo with Sylius 2.1
 
 ## Installation
 

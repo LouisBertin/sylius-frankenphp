@@ -11,6 +11,8 @@
 ## About
 Sylius and a Docker config based on FrankenPHP
 
+🚨 You can extract the Docker config for your own Sylius project. This is just a demo with Sylius 2.1.
+
 ## Installation
 
 **prerequisite**

@@ -10,7 +10,7 @@ services:
                 condition: service_healthy
         environment:
             # Caddy configuration
-            - SERVER_NAME=:80
+            - SERVER_NAME=${SERVER_NAME}
             - CADDY_GLOBAL_OPTIONS=auto_https off
             # FrankenPHP worker mode
             - FRANKENPHP_CONFIG=worker ./public/index.php

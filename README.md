@@ -34,7 +34,7 @@ make up
 make install
 ```
 
-⚠️ the `hostname` value is asked during the `make install` command
+⚠️ the `hostname` value is asked during the `make install` command. For development, typically use `localhost` as the hostname
 
 ### Production
 

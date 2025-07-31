@@ -1,18 +1,18 @@
 <p align="center">
     <a href="https://sylius.com" target="_blank">
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="https://media.sylius.com/sylius-logo-800-dark.png">
-          <source media="(prefers-color-scheme: light)" srcset="https://media.sylius.com/sylius-logo-800.png">
-          <img alt="Sylius Logo" src="https://media.sylius.com/sylius-logo-800.png" height="100">
-        </picture>
+      <img alt="Sylius Logo" src="https://avatars.githubusercontent.com/u/719423?s=280&v=4" height="100">
     </a>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://frankenphp.dev/">
         <img alt="FrankenPHP Logo" src="https://frankenphp.dev/img/dab.svg" height="100">
     </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://www.docker.com/">
+        <img alt="FrankenPHP Logo" src="https://training.galaxyproject.org/training-material/topics/admin/images/docker_whale.png" height="100">
+    </a>
 </p>
 
-<h1 align="center">Sylius Standard Edition</h1>
+<h1 align="center">Sylius + FrankenPHP + Docker</h1>
 
 <p align="center">This is Sylius Standard Edition repository for starting new projects.</p>
 

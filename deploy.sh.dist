@@ -12,6 +12,6 @@ echo "📥 Pull des changements..."
 git pull origin main && \
 echo "🔨 Rebuild et restart..." && \
 make cc && \
-docker-compose -f compose.prod.yml up --force-recreate -d frankenphp && \
+make rebuild-franken && \
 echo "✅ Déploiement terminé !"
 EOF

@@ -28,6 +28,9 @@ clean:
 franken:
 	@DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) exec frankenphp bash
 
+rebuild-franken:
+	@DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) -f compose.prod.yml up --force-recreate -d frankenphp
+
 cc:
 	@DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) exec frankenphp bin/console cache:clear
 
